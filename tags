@@ -1,0 +1,83 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	/home/n3rdy/dev/c/zero/eaux/	//
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.9.0	//
+.PHONY	Makefile	/^.PHONY:=all clean mosaic$/;"	m
+.PHONY	mosaic/Makefile	/^.PHONY = clean all$/;"	m
+0	compile_commands.json	/^      "\/usr\/bin\/gcc",$/;"	s	array:0.arguments
+0	compile_commands.json	/^      "\/usr\/bin\/gcc",$/;"	s	array:1.arguments
+0	compile_commands.json	/^  {$/;"	o
+1	compile_commands.json	/^      "-Wall",$/;"	s	array:0.arguments
+1	compile_commands.json	/^      "-c",$/;"	s	array:1.arguments
+1	compile_commands.json	/^  {$/;"	o
+2	compile_commands.json	/^      "-I.\/mosaic\/src",$/;"	s	array:0.arguments
+2	compile_commands.json	/^      "-Wall",$/;"	s	array:1.arguments
+3	compile_commands.json	/^      "-I.\/mosaic\/src",$/;"	s	array:1.arguments
+3	compile_commands.json	/^      "-c",$/;"	s	array:0.arguments
+4	compile_commands.json	/^      "src\/eaux.c",$/;"	s	array:0.arguments
+4	compile_commands.json	/^      "src\/test.c",$/;"	s	array:1.arguments
+5	compile_commands.json	/^      "-o",$/;"	s	array:0.arguments
+5	compile_commands.json	/^      "-o",$/;"	s	array:1.arguments
+6	compile_commands.json	/^      "eaux.o"$/;"	s	array:0.arguments
+6	compile_commands.json	/^      "test"$/;"	s	array:1.arguments
+CC	Makefile	/^CC:=cc$/;"	m
+CC	mosaic/Makefile	/^CC=clang$/;"	m
+CFLAGS	Makefile	/^CFLAGS:=-Wall$/;"	m
+CFLAGS	mosaic/Makefile	/^CFLAGS=-Wall$/;"	m
+EAUX_PERCEPTRON_H	src/eaux.h	/^#define EAUX_PERCEPTRON_H$/;"	d
+INCLUDE	Makefile	/^INCLUDE:=.\/mosaic\/src$/;"	m
+LINK	Makefile	/^LINK:=mosaic$/;"	m
+LINK_DIRS	Makefile	/^LINK_DIRS:=.\/mosaic\/$/;"	m
+MOSAIC_MATRIX_H	mosaic/src/mosaic.h	/^#define MOSAIC_MATRIX_H$/;"	d
+activate	src/eaux.c	/^float activate(float val) {$/;"	f	typeref:typename:float
+all	Makefile	/^all: libeaux.a test mosaic$/;"	t
+all	mosaic/Makefile	/^all: libmosaic.a test$/;"	t
+arguments	compile_commands.json	/^    "arguments": [$/;"	a	object:0
+arguments	compile_commands.json	/^    "arguments": [$/;"	a	object:1
+clean	Makefile	/^clean:$/;"	t
+clean	mosaic/Makefile	/^clean:$/;"	t
+cols	mosaic/src/mosaic.h	/^	unsigned int cols;$/;"	m	struct:mosaic_matrix	typeref:typename:unsigned int
+directory	compile_commands.json	/^    "directory": "\/home\/n3rdy\/dev\/c\/zero\/eaux",$/;"	s	object:0
+directory	compile_commands.json	/^    "directory": "\/home\/n3rdy\/dev\/c\/zero\/eaux",$/;"	s	object:1
+eaux.o	Makefile	/^eaux.o: src\/eaux.c src\/eaux.h mosaic$/;"	t
+eaux_perceptron	src/eaux.h	/^struct eaux_perceptron {$/;"	s
+eaux_perceptron_calc	src/eaux.c	/^int eaux_perceptron_calc(struct eaux_perceptron *ptron,$/;"	f	typeref:typename:int
+eaux_perceptron_free	src/eaux.c	/^int eaux_perceptron_free(struct eaux_perceptron *ptron) {$/;"	f	typeref:typename:int
+eaux_perceptron_init	src/eaux.c	/^int eaux_perceptron_init(struct eaux_perceptron *ptron,$/;"	f	typeref:typename:int
+eaux_perceptron_print_debug_info	src/eaux.c	/^int eaux_perceptron_print_debug_info(struct eaux_perceptron *ptron) {$/;"	f	typeref:typename:int
+eaux_weight_adjust	src/eaux.c	/^float eaux_weight_adjust = 0.1;$/;"	v	typeref:typename:float
+eaux_weight_range	src/eaux.c	/^float eaux_weight_range = 1;$/;"	v	typeref:typename:float
+file	compile_commands.json	/^    "file": "\/home\/n3rdy\/dev\/c\/zero\/eaux\/src\/eaux.c",$/;"	s	object:0
+file	compile_commands.json	/^    "file": "\/home\/n3rdy\/dev\/c\/zero\/eaux\/src\/test.c",$/;"	s	object:1
+layer_count	src/eaux.h	/^	unsigned int layer_count;$/;"	m	struct:eaux_perceptron	typeref:typename:unsigned int
+layer_sizes	src/eaux.h	/^	unsigned int *layer_sizes;$/;"	m	struct:eaux_perceptron	typeref:typename:unsigned int *
+layers	src/eaux.h	/^	struct mosaic_matrix *layers;$/;"	m	struct:eaux_perceptron	typeref:struct:mosaic_matrix *
+libeaux.a	Makefile	/^libeaux.a: eaux.o mosaic$/;"	t
+libmosaic.a	mosaic/Makefile	/^libmosaic.a: mosaic.o$/;"	t
+main	mosaic/src/test.c	/^int main() {$/;"	f	typeref:typename:int
+main	src/test.c	/^int main() {$/;"	f	typeref:typename:int
+mosaic	Makefile	/^mosaic:$/;"	t
+mosaic.o	mosaic/Makefile	/^mosaic.o: src\/mosaic.c src\/mosaic.h$/;"	t
+mosaic_free	mosaic/src/mosaic.c	/^int mosaic_free(struct mosaic_matrix *matrix) {$/;"	f	typeref:typename:int
+mosaic_matrix	mosaic/src/mosaic.h	/^struct mosaic_matrix {$/;"	s
+mosaic_matrix_add	mosaic/src/mosaic.c	/^int mosaic_matrix_add(struct mosaic_matrix *m1, $/;"	f	typeref:typename:int
+mosaic_matrix_apply	mosaic/src/mosaic.c	/^int mosaic_matrix_apply(struct mosaic_matrix *matrix, float (*func)(float)) {$/;"	f	typeref:typename:int
+mosaic_matrix_assign	mosaic/src/mosaic.c	/^int mosaic_matrix_assign(struct mosaic_matrix *matrix, float *values) {$/;"	f	typeref:typename:int
+mosaic_matrix_init	mosaic/src/mosaic.c	/^int mosaic_matrix_init(struct mosaic_matrix *matrix, unsigned int rows, unsigned int cols) {$/;"	f	typeref:typename:int
+mosaic_matrix_multiply	mosaic/src/mosaic.c	/^int mosaic_matrix_multiply(struct mosaic_matrix *m1, $/;"	f	typeref:typename:int
+mosaic_print	mosaic/src/mosaic.c	/^int mosaic_print(struct mosaic_matrix *matrix) {$/;"	f	typeref:typename:int
+output	compile_commands.json	/^    "output": "\/home\/n3rdy\/dev\/c\/zero\/eaux\/eaux.o"$/;"	s	object:0
+output	compile_commands.json	/^    "output": "\/home\/n3rdy\/dev\/c\/zero\/eaux\/src\/test.o"$/;"	s	object:1
+raw	mosaic/src/mosaic.h	/^	float *raw;$/;"	m	struct:mosaic_matrix	typeref:typename:float *
+rows	mosaic/src/mosaic.h	/^	unsigned int rows;$/;"	m	struct:mosaic_matrix	typeref:typename:unsigned int
+set_random	src/eaux.c	/^float set_random(float dud) {$/;"	f	typeref:typename:float
+test	Makefile	/^test: libeaux.a src\/test.c mosaic$/;"	t
+test	mosaic/Makefile	/^test: libmosaic.a src\/test.c$/;"	t
+weights	src/eaux.h	/^	struct mosaic_matrix *weights;$/;"	m	struct:eaux_perceptron	typeref:struct:mosaic_matrix *

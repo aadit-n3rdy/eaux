@@ -1,0 +1,5 @@
+.clangd/**
+**.o
+test
+log.txt
+compile_commands.json
