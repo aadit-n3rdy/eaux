@@ -21,4 +21,6 @@ int eaux_perceptron_calc(struct eaux_perceptron *ptron,
 int eaux_perceptron_print_debug_info(struct eaux_perceptron *ptron);
 
 int eaux_perceptron_free(struct eaux_perceptron *ptron);
+
+int eaux_perceptron_cpy(struct eaux_perceptron *ptron_from, struct eaux_perceptron *ptron_to);
 #endif 
