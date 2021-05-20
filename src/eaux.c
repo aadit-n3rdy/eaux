@@ -90,3 +90,15 @@ int eaux_perceptron_free(struct eaux_perceptron *ptron) {
 	free(ptron->weights);
 	return 0;
 }
+
+int eaux_perceptron_cpy(struct eaux_perceptron *from, struct eaux_perceptron *to) {
+	unsigned int *layer_sizes = from->layer_sizes;
+	unsigned int weight_count = from->layer_count-1;
+	eaux_perceptron_init(to, layer_sizes, weight_count+1, 0);
+	unsigned int i = 0;
+	for (i = 0; i < weight_count; i++) {
+		mosaic_cpy(&from->weights[i], &to->weights[i]);
+	}
+	return 0;
+}
+
