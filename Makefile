@@ -1,30 +1,44 @@
-CC:=clang
-CFLAGS:=-Wall
-.PHONY:=all clean
-INCLUDE:=./mosaic/src
-LINK_DIRS:=./mosaic/
-LINK:=mosaic
+CC=gcc
+.PHONY = clean all debug release
 
+SRCDIR:=src
+SRC:=$(wildcard $(SRCDIR)/*.c)
 
-all: libeaux.a test mosaic
+INCL:=-Isrc -Imosaic/src
 
+DEBUG_DIR:=debug
+DEBUG_CFLAGS:=-Wall -g -O0 -fsanitize=address -s
+DEBUG_OBJ:=$(SRC:$(SRCDIR)/%.c=$(DEBUG_DIR)/obj/%.o)
 
-libeaux.a: eaux.o mosaic/libmosaic.a
-	ar rcs libeaux.a eaux.o mosaic/libmosaic.a 
+RELEASE_DIR:=release
+RELEASE_CFLAGS:=-Wall -s
+RELEASE_OBJ:=$(SRC:$(SRCDIR)/%.c=$(RELEASE_DIR)/obj/%.o)
 
-mosaic/libmosaic.a:
-	$(MAKE) -C mosaic/
+all: debug release 
 
-eaux.o: src/eaux.c src/eaux.h mosaic
-	${CC} ${CFLAGS} -I${INCLUDE} -c src/eaux.c -o eaux.o
+$(DEBUG_OBJ): $(DEBUG_DIR)/obj/%.o : $(SRCDIR)/%.c
+	$(CC) $(DEBUG_CFLAGS) $(INCL) -c $< -o $@
+	@echo "Built debug objs"
+
+debug: $(DEBUG_OBJ)
+	ar rcs $(DEBUG_DIR)/libeaux.a $(DEBUG_OBJ)
+
+$(RELEASE_OBJ): $(RELEASE_DIR)/obj/%.o : $(SRCDIR)/%.c
+	$(CC) $(RELEASE_CFLAGS) $(INCL) -c $< -o $@
+	@echo "Build release objs"
+
+release: $(RELEASE_OBJ)
+	ar rcs $(RELEASE_DIR)/libeaux.a $(RELEASE_OBJ)
+
+mosaic_debug:
+	$(MAKE) -C mosaic debug
+
+test: debug src/test/test.c mosaic_debug
+	$(CC) $(DEBUG_CFLAGS) -o test $(INCL) -Ldebug -Lmosaic/debug src/test/test.c -lasan -leaux -lmosaic -lm 
 
 clean:
-	-- 	rm *.o
-	--	rm libeaux.a
+	--	rm $(DEBUG_OBJ) debug/libeaux.a
+	--	rm $(RELEASE_OBJ) release/libeaux.a
 	--	rm test
-	$(MAKE) -C mosaic/ clean
-
-test: libeaux.a src/test.c mosaic
-	${CC} ${CFLAGS} -I${INCLUDE} src/test.c -o test -L. -leaux -L./mosaic -lmosaic -lm
-
+	--	$(MAKE) -C mosaic/ clean
 
