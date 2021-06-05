@@ -1,0 +1,34 @@
+CC:=gcc
+CFLAGS:=-Wall -O0 -g
+.PHONY:=all clean
+INCLUDE:=./mosaic/src
+LINK_DIRS:=./mosaic/
+LINK:=mosaic
+
+SRCDIR:=src
+SRC:=$(wildcard $(SRCDIR)/*.c)
+
+DEBUG_DIR:=debug
+
+all: libeaux.a test mosaic
+
+
+libeaux.a: eaux.o mosaic/libmosaic.a
+	ar rcs libeaux.a eaux.o 
+
+mosaic/libmosaic.a:
+	$(MAKE) -C mosaic/
+
+eaux.o: src/eaux.c src/eaux.h mosaic
+	${CC} ${CFLAGS} -I${INCLUDE} -c src/eaux.c -o eaux.o
+
+clean:
+	-- 	rm *.o
+	--	rm libeaux.a
+	--	rm test
+	$(MAKE) -C mosaic/ clean
+
+test: libeaux.a src/test/test.c mosaic
+	--	${CC} ${CFLAGS} -I${INCLUDE} -Isrc src/test/test.c -o test -L. -lasan -leaux -L./mosaic -lmosaic -lm
+
+

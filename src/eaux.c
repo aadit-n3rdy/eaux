@@ -42,7 +42,10 @@ int eaux_perceptron_init(struct eaux_perceptron *ptron,
 
 int eaux_perceptron_calc(struct eaux_perceptron *ptron,
 		float *input, float *output) {
-	struct mosaic_matrix output_matrix;
+	struct mosaic_matrix output_matrix = {0, 0, 0};
+	output_matrix.cols = 0;
+	output_matrix.rows = 0;
+	output_matrix.raw = NULL;
 	mosaic_matrix_init(&output_matrix, ptron->layer_sizes[ptron->layer_count-1], 1);
 	mosaic_matrix_assign(&ptron->layers[0], input);
 	unsigned int i = 0;
